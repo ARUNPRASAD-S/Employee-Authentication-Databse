@@ -1,0 +1,29 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 offset-md-3">
+                <form [formGroup]="loginform">
+                    <div class="form-group">
+                        Email:
+                        <input type="text" class="form-control" formControlName="username" 
+                        [ngClass]="{'is-invalid':loginform.controls['username'].errors}">
+                        <div *ngIf="loginform.controls['username'].errors" class="invalid-feedback">
+                            Username or Email is Required
+                        </div>
+                    </div><br>
+                    <div class="form-group">
+                        Password:<br>
+                        <input type="password" class="from-control" formControlName="password" 
+                        [ngClass]="{'is-invalid':loginform.controls['password'].errors}">
+                        <div *ngIf="loginform.controls['password'].errors" class="invalid-feedback">
+                            Password is Required
+                        </div>
+                    </div><br>
+                    <div class="form-group">
+                        <input type="submit" [disabled]="!loginform.valid" value="login" (click)="login()" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

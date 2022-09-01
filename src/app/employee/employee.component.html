@@ -1,0 +1,110 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Employee Management System</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="FirstName">
+                <th mat-header-cell *matHeaderCellDef>FirstName </th>
+                <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="LastName">
+                <th mat-header-cell *matHeaderCellDef>LastName</th>
+                <td mat-cell *matCellDef="let element"> {{element.LastName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Gender">
+                <th mat-header-cell *matHeaderCellDef>Gender</th>
+                <td mat-cell *matCellDef="let element"> {{element.Gender}} </td>
+            </ng-container>
+            <ng-container matColumnDef="ContactNumber">
+                <th mat-header-cell *matHeaderCellDef>Contact Number</th>
+                <td mat-cell *matCellDef="let element"> {{element.ContactNumber}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Email">
+                <th mat-header-cell *matHeaderCellDef>Email</th>
+                <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+            </ng-container>
+            <ng-container matColumnDef="State">
+                <th mat-header-cell *matHeaderCellDef>State</th>
+                <td mat-cell *matCellDef="let element"> {{element.State}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="City">
+                <th mat-header-cell *matHeaderCellDef>City</th>
+                <td mat-cell *matCellDef="let element"> {{element.City}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Designation">
+                <th mat-header-cell *matHeaderCellDef>Designation</th>
+                <td mat-cell *matCellDef="let element"> {{element.Designation}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Experience">
+                <th mat-header-cell *matHeaderCellDef>Experience</th>
+                <td mat-cell *matCellDef="let element"> {{element.Experience}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button (click)="deleteemployee(element.id)" color="secondary">Delete Employee</button>
+                    <button mat-raised-button (click)="selectemployee(element)" color="secondary">Select Employee</button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Create a Employee</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form #f="ngForm" class="mat-elevation-z8" style="width: 100%; padding: 5px;">
+            <mat-form-field>
+                <input matInput placeholder="id" name="id" [(ngModel)]="Employee.id" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="FirstName" name="FirstName" [(ngModel)]="Employee.FirstName" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="LastName" name="LastName" [(ngModel)]="Employee.LastName" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Gender" name="Gender" [(ngModel)]="Employee.Gender" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="ContactNumber" name="ContactNumber" [(ngModel)]="Employee.ContactNumber" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Email" name="Email" [(ngModel)]="Employee.Email" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="State" name="State" [(ngModel)]="Employee.State" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="City" name="City" [(ngModel)]="Employee.City" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Designation" name="Designation" [(ngModel)]="Employee.Designation" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Experience" name="Experience" [(ngModel)]="Employee.Experience" required>
+            </mat-form-field>
+        </form>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button *ngIf="Employee.id" (click)="createemployee(f)" color="primary">Save Employee</button>
+        <button mat-raised-button *ngIf="Employee.id" (click)="updateemployee(f)" color="primary">Update Employee</button>
+        <button mat-raised-button (click)="newemployee()" color="primary">New Employee</button>
+
+    </mat-card-actions>
+</mat-card>
